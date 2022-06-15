@@ -1,0 +1,32 @@
+.navbar {
+  height: 50px;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+
+  .navbar__container {
+    width: 100%;
+    max-width: 1024px;
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .navbar__logo {
+      font-weight: 500;
+      font-size: 25px;
+      font-family: 'Nunito';
+      cursor: pointer;
+    }
+
+    .navbar__items {
+      .navbar__items__button {
+        margin-left: 20px;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        color: var(--primary-color);
+      }
+    }
+  }
+}

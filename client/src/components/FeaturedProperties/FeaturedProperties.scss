@@ -1,0 +1,45 @@
+.fp {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  .fp__item {
+    flex: 1;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .fp__img {
+      width: 100%;
+    }
+
+    .fp__item__name {
+      font-weight: bold;
+    }
+
+    .fp__item__city {
+      font-weight: 300;
+    }
+
+    .fp__item__price {
+      font-weight: 500;
+    }
+
+    .fp__item__rating {
+      button {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        border: none;
+        padding: 3px;
+        margin-right: 10px;
+        font-weight: bold;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}

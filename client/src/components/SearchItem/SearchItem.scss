@@ -1,0 +1,109 @@
+.searchItem {
+  border: 1px solid var(--lightGray-color);
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+
+  .searchItem__img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .searchItem__desc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 2;
+
+    .searchItem__desc__title {
+      font-size: 20px;
+      color: var(--primary-color);
+    }
+
+    .searchItem__desc__distance {
+      font-size: 14px;
+    }
+
+    .searchItem__desc__taxiOp {
+      font-size: 14px;
+      background-color: var(--green-color);
+      color: var(--white-color);
+      width: max-content;
+      padding: 3px;
+      border-radius: 5px;
+    }
+
+    .searchItem__desc__subtitle {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .searchItem__desc__features {
+      font-size: 14px;
+    }
+
+    .searchItem__desc__cancelOp {
+      font-size: 14px;
+      color: var(--green-color);
+      font-weight: bold;
+    }
+
+    .searchItem__desc__cancelOp__subtitle {
+      font-size: 14px;
+      color: var(--green-color);
+    }
+  }
+
+  .searchItem__details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .searchItem__details__rating {
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        font-weight: 500;
+      }
+      button {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        padding: 5px;
+        font-weight: bold;
+        border: none;
+      }
+    }
+  }
+
+  .searchItem__details__texts {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .searchItem__details__texts__price {
+      font-size: 24px;
+    }
+
+    .searchItem__details__texts__taxOp {
+      font-size: 14px;
+      color: var(--gray-color);
+    }
+
+    .searchItem__details__texts__button {
+      background-color: var(--secondary-color);
+      color: var(--white-color);
+      font-weight: bold;
+      padding: 10px 5px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  }
+}

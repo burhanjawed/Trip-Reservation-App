@@ -6,10 +6,12 @@ import hotelsRoute from './routes/hotels.js';
 import roomsRoute from './routes/rooms.js';
 import usersRoute from './routes/users.js';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 const app = express();
 dotenv.config();
 
+// connect mongodb
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO);
@@ -24,6 +26,12 @@ mongoose.connection.on('disconnected', () => {
 });
 
 // middlewares
+// app.use(
+//   cors({
+//     origin: 'http://localhost:3000',
+//     methods: 'GET',
+//   })
+// );
 app.use(cookieParser());
 app.use(express.json());
 
