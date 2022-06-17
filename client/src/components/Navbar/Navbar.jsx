@@ -6,7 +6,7 @@ import './Navbar.scss';
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const { user, loading, error, dispatch } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
 
   const handleLogout = () => {
     try {
