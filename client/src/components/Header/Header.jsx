@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBed,
@@ -15,13 +15,15 @@ import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
 import './Header.scss';
 import { useNavigate } from 'react-router-dom';
+import { SearchContext } from '../../context/SearchContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const Header = ({ type }) => {
   const navigate = useNavigate();
 
   const [destination, setDestination] = useState('');
   const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
@@ -35,6 +37,9 @@ const Header = ({ type }) => {
     room: 1,
   });
 
+  const { user } = useContext(AuthContext);
+  const { dispatch } = useContext(SearchContext);
+
   const handleOption = (category, operation) => {
     setOptions((prev) => {
       return {
@@ -46,7 +51,9 @@ const Header = ({ type }) => {
   };
 
   const handleSearch = () => {
-    navigate('hotels', { state: { destination, date, options } });
+    dispatch({ type: 'NEW_SEARCH', payload: { destination, dates, options } });
+
+    navigate('hotels', { state: { destination, dates, options } });
   };
 
   return (
@@ -90,7 +97,9 @@ const Header = ({ type }) => {
               Get rewarded for your travels - unlock instant savings of 10% or
               more with a free Tripable account
             </p>
-            <button className='header__btn'>Sign In / Register</button>
+            {!user && (
+              <button className='header__btn'>Sign In / Register</button>
+            )}
             <div className='header__search'>
               <div className='header__search__item'>
                 <FontAwesomeIcon icon={faBed} className='header__icon' />
@@ -112,16 +121,16 @@ const Header = ({ type }) => {
                     setOpenDate(!openDate);
                     openOptions && setOpenOptions(!openOptions);
                   }}
-                >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
-                  date[0].endDate,
+                >{`${format(dates[0].startDate, 'MM/dd/yyyy')} to ${format(
+                  dates[0].endDate,
                   'MM/dd/yyyy'
                 )}`}</span>
                 {openDate && (
                   <DateRange
                     editableDateInputs={true}
-                    onChange={(item) => setDate([item.selection])}
+                    onChange={(item) => setDates([item.selection])}
                     moveRangeOnFirstSelection={false}
-                    ranges={date}
+                    ranges={dates}
                     className='header__search__item__date'
                     minDate={new Date()}
                   />

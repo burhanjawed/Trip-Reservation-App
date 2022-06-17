@@ -6,14 +6,26 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import './List.scss';
+import useFetch from '../../hooks/useFetch';
 
 const List = () => {
   const location = useLocation();
 
   const [destination, setDestination] = useState(location.state.destination);
-  const [date, setDate] = useState(location.state.date);
+  const [dates, setDates] = useState(location.state.dates);
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
+  const [minPrice, setMinPrice] = useState(undefined);
+  const [maxPrice, setMaxPrice] = useState(undefined);
+
+  // fetch data by city from api
+  const { data, loading, error, reFetch } = useFetch(
+    `/hotels?city=${destination}&min=${minPrice || 0}&max=${maxPrice || 9999}`
+  );
+
+  const handleSearch = () => {
+    reFetch();
+  };
 
   return (
     <>
@@ -32,15 +44,15 @@ const List = () => {
               <span
                 className='list__search__date'
                 onClick={() => setOpenDate(!openDate)}
-              >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
-                date[0].endDate,
+              >{`${format(dates[0].startDate, 'MM/dd/yyyy')} to ${format(
+                dates[0].endDate,
                 'MM/dd/yyyy'
               )}`}</span>
               {openDate && (
                 <DateRange
-                  onChange={(item) => setDate([item.selection])}
+                  onChange={(item) => setDates([item.selection])}
                   minDate={new Date()}
-                  ranges={date}
+                  ranges={dates}
                   className='list__search__date__selection'
                 />
               )}
@@ -55,6 +67,7 @@ const List = () => {
                   <input
                     type='number'
                     className='list__search__option__input'
+                    onChange={(e) => setMinPrice(e.target.value)}
                   />
                 </div>
                 <div className='list__search__option__item'>
@@ -64,6 +77,7 @@ const List = () => {
                   <input
                     type='number'
                     className='list__search__option__input'
+                    onChange={(e) => setMaxPrice(e.target.value)}
                   />
                 </div>
                 <div className='list__search__option__item'>
@@ -95,17 +109,20 @@ const List = () => {
                 </div>
               </div>
             </div>
-            <button className='search__button'>Search</button>
+            <button className='search__button' onClick={handleSearch}>
+              Search
+            </button>
           </div>
           <div className='list__result'>
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
+            {loading ? (
+              'Loading please wait'
+            ) : (
+              <>
+                {data.map((item) => (
+                  <SearchItem item={item} key={item._id} />
+                ))}
+              </>
+            )}
           </div>
         </div>
       </div>
