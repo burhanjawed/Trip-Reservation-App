@@ -7,3 +7,6 @@ export { default as MailList } from './MailList/MailList';
 export { default as Footer } from './Footer/Footer';
 export { default as SearchItem } from './SearchItem/SearchItem';
 export { default as Reserve } from './Reserve/Reserve';
+
+export { default as DashboardNavbar } from './Dashboard/Navbar/Navbar';
+export { default as DashboardSidebar } from './Dashboard/Sidebar/Sidebar';

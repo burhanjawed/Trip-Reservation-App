@@ -1,0 +1,43 @@
+.dashboard__sidebar {
+  flex: 1;
+  border-right: 0.5px solid var(--border-color);
+  min-height: 100vh;
+  background-color: var(--white-color);
+
+  .dashboard__sidebar__top {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .dashboard__sidebar__logo {
+      font-weight: 500;
+      font-size: 25px;
+      font-family: 'Nunito';
+      cursor: pointer;
+      color: var(--primary-color);
+    }
+  }
+
+  hr {
+    height: 0;
+    border: 0.5px solid var(--border-color);
+  }
+
+  .dashboard__sidebar__center {
+    padding-left: 10px;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      .dashboard__sidebar__title {
+        text-transform: uppercase;
+      }
+
+      li {
+      }
+    }
+  }
+}

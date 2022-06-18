@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap'); // Playfair
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap'); // Open sans
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap'); // Nunito
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'); // Inter
 
 :root {
   --font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
@@ -20,6 +20,8 @@
   --darkGray-color: rgb(88, 88, 88);
   --lightGray-color: lightgray;
   --lightBlue-color: #ebf3ff;
+  --modalBg-color: rgba(0, 0, 0, 0.418);
+  --border-color: rgb(224, 224, 224);
 }
 
 * {

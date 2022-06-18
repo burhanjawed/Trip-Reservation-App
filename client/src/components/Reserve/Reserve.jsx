@@ -1,5 +1,6 @@
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { SearchContext } from '../../context/SearchContext';
 import useFetch from '../../hooks/useFetch';
@@ -47,7 +48,23 @@ const Reserve = ({ setOpen, hotelId }) => {
     );
   };
 
-  const handleClick = () => {};
+  const handleClick = async () => {
+    try {
+      await Promise.all(
+        selectedRooms.map((roomId) => {
+          const res = axios.put(`/rooms/availability/${roomId}`, {
+            dates: allDates,
+          });
+
+          return res.data;
+        })
+      );
+
+      setOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className='reserve'>
@@ -67,6 +84,8 @@ const Reserve = ({ setOpen, hotelId }) => {
                 Max People: <b>{item.maxPeople}</b>
               </div>
               <div className='reserve__item__info__price'>${item.price}</div>
+            </div>
+            <div className='reserve__select_rooms'>
               {item.roomNumbers.map((roomNum) => (
                 <div className='reserve__item__info__room'>
                   <label>{roomNum.number}</label>

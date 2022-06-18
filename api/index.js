@@ -35,6 +35,7 @@ mongoose.connection.on('disconnected', () => {
 app.use(cookieParser());
 app.use(express.json());
 
+// routes
 app.use('/api/auth', authRoute);
 app.use('/api/hotels', hotelsRoute);
 app.use('/api/rooms', roomsRoute);
@@ -51,7 +52,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8800, () => {
+app.listen(process.env.PORT || 8800, () => {
   connect();
   console.log('Connected to backend.');
 });
