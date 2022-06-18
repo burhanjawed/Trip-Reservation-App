@@ -34,9 +34,60 @@
 
       .dashboard__sidebar__title {
         text-transform: uppercase;
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--gray-color);
+        margin-top: 15px;
+        margin-bottom: 5px;
+      }
+
+      .dashboard__sidebar__backBtn {
+        margin-top: 5px;
       }
 
       li {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #0035801c;
+        }
+
+        .dashboard__sidebar__icon {
+          font-size: 18px;
+          color: var(--primary-color);
+        }
+
+        span {
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--gray-color);
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .dashboard__sidebar__bottom {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+
+    .dashboard__sidebar__colorOption {
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid var(--primary-color);
+      cursor: pointer;
+      margin: 5px;
+
+      &:nth-child(1) {
+        background-color: var(--white-color);
+      }
+      &:nth-child(2) {
+        background-color: var(--darkMode-color);
       }
     }
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonIcon from '@mui/icons-material/Person';
 import StoreIcon from '@mui/icons-material/Store';
@@ -11,17 +12,32 @@ import ArticleIcon from '@mui/icons-material/Article';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LogoutIcon from '@mui/icons-material/Logout';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import './Sidebar.scss';
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
   return (
     <div className='dashboard__sidebar'>
       <div className='dashboard__sidebar__top'>
-        <span className='dashboard__sidebar__logo'>Tripable</span>
+        <span
+          className='dashboard__sidebar__logo'
+          onClick={() => navigate('/')}
+        >
+          Tripable
+        </span>
       </div>
       <hr />
       <div className='dashboard__sidebar__center'>
         <ul>
+          <li
+            onClick={() => navigate('/')}
+            className='dashboard__sidebar__backBtn'
+          >
+            <ArrowBackIosIcon className='dashboard__sidebar__icon' />
+            <span>Main Website</span>
+          </li>
           <p className='dashboard__sidebar__title'>Main</p>
           <li>
             <DashboardIcon className='dashboard__sidebar__icon' />
@@ -77,7 +93,10 @@ const Sidebar = () => {
           </li>
         </ul>
       </div>
-      <div className='dashboard__sidebar__bottom'>color options</div>
+      <div className='dashboard__sidebar__bottom'>
+        <div className='dashboard__sidebar__colorOption'></div>
+        <div className='dashboard__sidebar__colorOption'></div>
+      </div>
     </div>
   );
 };
