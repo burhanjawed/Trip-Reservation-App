@@ -1,5 +1,9 @@
 import React from 'react';
-import { DashboardNavbar, DashboardSidebar } from '../../../components';
+import {
+  DashboardNavbar,
+  DashboardSidebar,
+  DashboardWidget,
+} from '../../../components';
 import './Home.scss';
 
 const Home = () => {
@@ -8,7 +12,12 @@ const Home = () => {
       <DashboardSidebar />
       <div className='dashboard__home__container'>
         <DashboardNavbar />
-        Home Container
+        <div className='home__widgets'>
+          <DashboardWidget type='users' />
+          <DashboardWidget type='orders' />
+          <DashboardWidget type='earnings' />
+          <DashboardWidget type='balance' />
+        </div>
       </div>
     </div>
   );

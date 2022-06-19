@@ -52,7 +52,7 @@
         cursor: pointer;
 
         &:hover {
-          background-color: #0035801c;
+          background-color: var(--lightBlue-color);
         }
 
         .dashboard__sidebar__icon {

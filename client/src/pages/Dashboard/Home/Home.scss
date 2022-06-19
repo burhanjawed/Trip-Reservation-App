@@ -4,4 +4,10 @@
   .dashboard__home__container {
     flex: 6;
   }
+
+  .home__widgets {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+  }
 }
