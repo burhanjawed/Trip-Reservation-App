@@ -24,6 +24,11 @@ const Home = () => {
           <DashboardFeatured />
           <DashboardChart />
         </div>
+        <div className='dashboard__home__listContainer'>
+          <div className='dashboard__home__listContainer__listTitle'>
+            Latest Transactions
+          </div>
+        </div>
       </div>
     </div>
   );
