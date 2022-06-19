@@ -15,3 +15,4 @@ export { default as DashboardSidebar } from './Dashboard/Sidebar/Sidebar';
 export { default as DashboardWidget } from './Dashboard/Widget/Widget';
 export { default as DashboardChart } from './Dashboard/Chart/Chart';
 export { default as DashboardFeatured } from './Dashboard/Featured/Featured';
+export { default as DashboardTable } from './Dashboard/Table/DashboardTable';

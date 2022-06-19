@@ -4,6 +4,7 @@ import {
   DashboardFeatured,
   DashboardNavbar,
   DashboardSidebar,
+  DashboardTable,
   DashboardWidget,
 } from '../../../components';
 import './Home.scss';
@@ -28,6 +29,7 @@ const Home = () => {
           <div className='dashboard__home__listContainer__listTitle'>
             Latest Transactions
           </div>
+          <DashboardTable />
         </div>
       </div>
     </div>
