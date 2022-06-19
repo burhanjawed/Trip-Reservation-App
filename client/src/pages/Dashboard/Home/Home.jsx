@@ -1,5 +1,7 @@
 import React from 'react';
 import {
+  DashboardChart,
+  DashboardFeatured,
   DashboardNavbar,
   DashboardSidebar,
   DashboardWidget,
@@ -17,6 +19,10 @@ const Home = () => {
           <DashboardWidget type='orders' />
           <DashboardWidget type='earnings' />
           <DashboardWidget type='balance' />
+        </div>
+        <div className='home__charts'>
+          <DashboardFeatured />
+          <DashboardChart />
         </div>
       </div>
     </div>
