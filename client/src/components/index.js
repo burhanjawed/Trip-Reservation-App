@@ -16,3 +16,4 @@ export { default as DashboardWidget } from './Dashboard/Widget/Widget';
 export { default as DashboardChart } from './Dashboard/Chart/Chart';
 export { default as DashboardFeatured } from './Dashboard/Featured/Featured';
 export { default as DashboardTable } from './Dashboard/Table/DashboardTable';
+export { default as DashboardDatatable } from './Dashboard/Datatable/Datatable';

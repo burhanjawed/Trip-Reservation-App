@@ -21,8 +21,8 @@ const Featured = () => {
             strokeWidth={5}
             styles={buildStyles({
               // Colors
-              pathColor: `rgba(0, 113, 194, 0.8)`,
-              textColor: 'var(--secondary-color)',
+              pathColor: `rgba(0, 53, 128, 0.8)`,
+              textColor: 'var(--primary-color)',
               trailColor: '#d6d6d6',
               backgroundColor: '#3e98c7',
             })}
