@@ -3,7 +3,6 @@ import {
   AreaChart,
   Area,
   XAxis,
-  YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
@@ -19,11 +18,11 @@ const data = [
   { name: 'June', Total: 1700 },
 ];
 
-const Chart = () => {
+const Chart = ({ height, title }) => {
   return (
     <div className='dashboard__chart'>
-      <div className='dashboard__chart__title'>Last 6 Months (Revenue)</div>
-      <ResponsiveContainer width='100%' height={400}>
+      <div className='dashboard__chart__title'>{title}</div>
+      <ResponsiveContainer width='100%' height={height}>
         <AreaChart
           width={730}
           height={250}
@@ -53,6 +52,12 @@ const Chart = () => {
       </ResponsiveContainer>
     </div>
   );
+};
+
+// Default props
+Chart.defaultProps = {
+  height: 400,
+  title: 'Last 6 Months (Revenue)',
 };
 
 export default Chart;

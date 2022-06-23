@@ -29,7 +29,7 @@ const Home = () => {
           <div className='dashboard__home__listContainer__listTitle'>
             Latest Transactions
           </div>
-          <DashboardTable />
+          <DashboardTable height={400} title='Last 6 Months (Revenue)' />
         </div>
       </div>
     </div>
