@@ -2,6 +2,27 @@
   height: 650px;
   padding: 20px;
 
+  .dashboard__datatable__title {
+    width: 100%;
+    font-size: 24px;
+    color: var(--gray-color);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .dashboard__datatable__title__link {
+      text-decoration: none;
+      color: var(--green-color);
+      font-size: 16px;
+      font-weight: 400;
+      border: 1px solid var(--green-color);
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+
   .cellWithImg {
     display: flex;
     align-items: center;
@@ -55,5 +76,9 @@
       border: 1px dotted rgba(220, 20, 60, 0.6);
       cursor: pointer;
     }
+  }
+
+  .dashboard__datatable__table {
+    background-color: var(--widget-color);
   }
 }

@@ -1,60 +1,56 @@
+import { useState } from 'react';
 import { DashboardNavbar, DashboardSidebar } from '../../../components';
 import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
 import './New.scss';
 
-const New = () => {
+const New = ({ inputs, title }) => {
+  const [file, setFile] = useState('');
+
   return (
     <div className='dashboard__new'>
       <DashboardSidebar />
       <div className='dashboard__new__container'>
         <DashboardNavbar />
         <div className='dashboard__new__container__top'>
-          <h1>Add New User</h1>
+          <h1>{title}</h1>
         </div>
         <div className='dashboard__new__container__bottom'>
           <div className='dashboard__new__container__bottom__left'>
             <img
-              src='https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
-              alt='User Avatar'
+              src={
+                file
+                  ? URL.createObjectURL(file)
+                  : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
+              }
+              alt={title === 'Add New User' ? 'User Avatar' : 'Product'}
             />
           </div>
           <div className='dashboard__new__container__bottom__right'>
             <form>
               <div className='dashboard__new__container__bottom__right__formInput'>
-                <label>
-                  <DriveFolderUploadOutlinedIcon />
+                <label htmlFor='imgFile'>
+                  Image:{' '}
+                  <DriveFolderUploadOutlinedIcon className='dashboard__new__container__bottom__right__formInput__icon' />
                 </label>
-                <input type='file' />
+                <input
+                  type='file'
+                  id='imgFile'
+                  className='dashboard__new__container__bottom__right__formInput__imgFile'
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
               </div>
-              <div className='dashboard__new__container__bottom__right__formInput'>
-                <label>Username</label>
-                <input type='text' placeholder='john_doe' />
+              {inputs?.map((input) => (
+                <div
+                  className='dashboard__new__container__bottom__right__formInput'
+                  key={input.id}
+                >
+                  <label>{input.label}</label>
+                  <input type={input.type} placeholder={input.placeholder} />
+                </div>
+              ))}
+              <div className='dashboard__new__container__bottom__right__btn'>
+                <button>Send</button>
               </div>
-              <div className='dashboard__new__container__bottom__right__formInput'>
-                <label>First Name and Last Name</label>
-                <input type='text' placeholder='John Doe' />
-              </div>
-              <div className='dashboard__new__container__bottom__right__formInput'>
-                <label>Email</label>
-                <input type='email' placeholder='john_doe@gmail.com' />
-              </div>
-              <div className='dashboard__new__container__bottom__right__formInput'>
-                <label>Phone</label>
-                <input type='text' placeholder='905-999-4444' />
-              </div>
-              <div className='dashboard__new__container__bottom__right__formInput'>
-                <label>Password</label>
-                <input type='password' />
-              </div>
-              <div className='dashboard__new__container__bottom__right__formInput'>
-                <label>Address</label>
-                <input type='text' placeholder='41 Discovery Road' />
-              </div>
-              <div className='dashboard__new__container__bottom__right__formInput'>
-                <label>Country</label>
-                <input type='text' placeholder='Canada' />
-              </div>
-              <button>Send</button>
             </form>
           </div>
         </div>

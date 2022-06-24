@@ -2,7 +2,7 @@
   flex: 1;
   border-right: 0.5px solid var(--border-color);
   min-height: 100vh;
-  background-color: var(--white-color);
+  background-color: var(--widget-color);
 
   .dashboard__sidebar__top {
     height: 50px;
@@ -87,7 +87,7 @@
         background-color: var(--white-color);
       }
       &:nth-child(2) {
-        background-color: var(--darkMode-color);
+        background-color: #333;
       }
     }
   }

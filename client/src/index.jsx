@@ -5,14 +5,19 @@ import './index.scss';
 import App from './App';
 import { SearchContextProvider } from './context/SearchContext';
 import { AuthContextProvider } from './context/AuthContext';
+import { DarkModeContextProvider } from './context/DarkModeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <AuthContextProvider>
-      <SearchContextProvider>
-        <App />
-      </SearchContextProvider>
-    </AuthContextProvider>
-  </BrowserRouter>
+  <div className='index dark'>
+    <BrowserRouter>
+      <DarkModeContextProvider>
+        <AuthContextProvider>
+          <SearchContextProvider>
+            <App />
+          </SearchContextProvider>
+        </AuthContextProvider>
+      </DarkModeContextProvider>
+    </BrowserRouter>
+  </div>
 );

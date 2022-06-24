@@ -12,6 +12,7 @@
       -webkit-box-shadow: var(--widgetWebkitShadow);
       margin: 20px;
       display: flex;
+      background-color: var(--widget-color);
 
       h1 {
         color: var(--gray-color);
@@ -21,6 +22,7 @@
       .dashboard__new__container__bottom__left {
         flex: 1;
         text-align: center;
+        padding: 20px;
 
         img {
           width: 100px;
@@ -32,6 +34,58 @@
 
       .dashboard__new__container__bottom__right {
         flex: 2;
+        padding: 20px;
+
+        form {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          justify-content: space-around;
+
+          .dashboard__new__container__bottom__right__formInput {
+            width: 40%;
+
+            label {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            }
+
+            input {
+              width: 100%;
+              padding: 5px;
+              border: none;
+              border-bottom: 1px solid var(--gray-color);
+              outline: none;
+            }
+
+            .dashboard__new__container__bottom__right__formInput__icon {
+              cursor: pointer;
+            }
+
+            .dashboard__new__container__bottom__right__formInput__imgFile {
+              display: none;
+            }
+          }
+
+          .dashboard__new__container__bottom__right__btn {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            margin-right: 35px;
+
+            button {
+              width: 150px;
+              padding: 10px;
+              border: none;
+              background-color: var(--primary-color);
+              color: var(--white-color);
+              cursor: pointer;
+              font-weight: bold;
+              margin-top: 10px;
+            }
+          }
+        }
       }
     }
   }

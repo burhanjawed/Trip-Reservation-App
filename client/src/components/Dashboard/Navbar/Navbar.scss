@@ -5,6 +5,7 @@
   align-items: center;
   font-size: 14px;
   color: var(--gray-color);
+  background-color: var(--widget-color);
 
   .dashboard__navbar__wrapper {
     display: flex;
@@ -35,6 +36,10 @@
         margin-right: 20px;
         position: relative;
 
+        .dashboard__navbar__icon {
+          cursor: pointer;
+        }
+
         .dashboard__navbar__items__item__avatar {
           width: 30px;
           height: 30px;
@@ -46,7 +51,7 @@
           height: 18px;
           background-color: var(--red-color);
           border-radius: 50%;
-          color: white;
+          color: var(--white-color);
           display: flex;
           align-items: center;
           justify-content: center;

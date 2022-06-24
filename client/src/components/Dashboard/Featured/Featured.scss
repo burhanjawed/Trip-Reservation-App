@@ -3,6 +3,7 @@
   box-shadow: var(--widgetShadow);
   -webkit-box-shadow: var(--widgetWebkitShadow);
   padding: 10px;
+  background-color: var(--widget-color);
 
   .dashboard__featured__top {
     display: flex;

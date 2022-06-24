@@ -1,0 +1,89 @@
+// dark theme
+.app.dark {
+  // theme colors
+  --background-color: #232323;
+  --primary-color: #0071c2;
+  --secondary-color: #003580;
+  --white-color: #ffffff;
+  --black-color: #000000;
+  --yellow-color: #febb02;
+  --green-color: #008009;
+  --gray-color: gray;
+  --red-color: red;
+  --darkGray-color: rgb(88, 88, 88);
+  --lightGray-color: lightgray;
+  --lightBlue-color: #232323;
+  --modalBg-color: rgba(0, 0, 0, 0.418);
+  --border-color: rgb(39, 39, 39);
+  --widget-color: rgb(24, 24, 24);
+
+  background-color: var(--background-color);
+  color: var(--white-color);
+
+  .dashboard__table {
+    background-color: var(--background-color);
+
+    .dashboard__tableCell {
+      color: var(--white-color);
+    }
+  }
+
+  .dashboard__chart {
+    background-color: var(--widget-color);
+  }
+
+  .dashboard__datatable__table {
+    color: var(--white-color);
+  }
+
+  .MuiTablePagination-displayedRows,
+  .css-levciy-MuiTablePagination-displayedRows {
+    color: var(--white-color);
+  }
+
+  .MuiSvgIcon-root,
+  .MuiSvgIcon-fontSizeMedium,
+  .css-i4bv87-MuiSvgIcon-root {
+    color: var(--white-color);
+  }
+
+  .dashboard__navbar {
+    .dashboard__navbar__wrapper {
+      .dashboard__navbar__search {
+        border: 0.5px solid var(--gray-color);
+
+        input {
+          color: var(--white-color);
+        }
+
+        .dashboard__navbar__icon {
+          color: var(--gray-color);
+        }
+      }
+
+      .dashboard__navbar__items {
+        .dashboard__navbar__items__item {
+          .dashboard__navbar__icon {
+            color: var(--gray-color);
+          }
+        }
+      }
+    }
+  }
+
+  .dashboard__datatable {
+    .dashboard__datatable__table {
+      border: none;
+
+      .dashboard__datatable__cellAction__viewButton,
+      .dashboard__datatable__cellAction__deleteButton {
+        color: var(--gray-color);
+        border: none;
+      }
+    }
+  }
+
+  input {
+    background: transparent;
+  }
+}
