@@ -8,3 +8,5 @@ export { default as DashboardList } from './Dashboard/List/List';
 export { default as DashboardLogin } from './Dashboard/Login/Login';
 export { default as DashboardNew } from './Dashboard/New/New';
 export { default as DashboardSingle } from './Dashboard/Single/Single';
+export { default as DashboardNewHotel } from './Dashboard/NewHotel/NewHotel';
+export { default as DashboardNewRoom } from './Dashboard/NewRoom/NewRoom';

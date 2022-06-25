@@ -1,14 +1,28 @@
 import './Datatable.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { userColumns, userRows } from '../../../datatablesource';
-import { useState } from 'react';
+import useFetch from '../../../hooks/useFetch';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const Datatable = () => {
-  const [data, setData] = useState(userRows);
+const Datatable = ({ columns, title }) => {
+  const location = useLocation();
+  const path = location.pathname.split('/')[2];
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+  const [list, setList] = useState();
+
+  const { data, loading, error } = useFetch(`/${path}`);
+
+  useEffect(() => {
+    setList(data);
+  }, [data]);
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/${path}/${id}`);
+      setList(list.filter((item) => item._id !== id));
+    } catch (error) {}
   };
 
   const actionColumn = [
@@ -26,7 +40,7 @@ const Datatable = () => {
             </Link>
             <div
               className='dashboard__datatable__cellAction__deleteButton'
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             >
               Delete
             </div>
@@ -39,22 +53,25 @@ const Datatable = () => {
   return (
     <div className='dashboard__datatable'>
       <div className='dashboard__datatable__title'>
-        Add New User
+        {title}
         <Link
-          to='/dashboard/users/new'
+          to={`/dashboard/${path}/new`}
           className='dashboard__datatable__title__link'
         >
           Add New
         </Link>
       </div>
-      <DataGrid
-        rows={data}
-        columns={userColumns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-        checkboxSelection
-        className='dashboard__datatable__table'
-      />
+      {list && (
+        <DataGrid
+          rows={list}
+          columns={columns.concat(actionColumn)}
+          pageSize={9}
+          rowsPerPageOptions={[9]}
+          checkboxSelection
+          className='dashboard__datatable__table'
+          getRowId={(row) => row._id}
+        />
+      )}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import {
   Home,
   Hotel,
@@ -11,12 +11,24 @@ import {
   DashboardSingle,
   DashboardNew,
 } from './pages';
-import { productInputs, userInputs } from './formSource';
+import { hotelInputs, productInputs, userInputs } from './formSource';
 import { DarkModeContext } from './context/DarkModeContext';
 import './App.scss';
+import { AuthContext } from './context/AuthContext';
+import { hotelColumns, userColumns } from './datatablesource';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
+
+  const ProtectedRoute = ({ children }) => {
+    const { user } = useContext(AuthContext);
+
+    if (!user) {
+      return <Navigate to='/dashboard/login' />;
+    }
+
+    return children;
+  };
 
   return (
     <div className={darkMode ? 'app dark' : 'app'}>
@@ -28,11 +40,32 @@ function App() {
 
         {/* dashboard routes  */}
         <Route path='/dashboard'>
-          <Route index element={<DashboardHome />} />
           <Route path='login' element={<DashboardLogin />} />
+          <Route
+            index
+            element={
+              <ProtectedRoute>
+                <DashboardHome />
+              </ProtectedRoute>
+            }
+          />
           <Route path='users'>
-            <Route index element={<DashboardList />} />
-            <Route path=':userId' element={<DashboardSingle />} />
+            <Route
+              index
+              element={
+                <ProtectedRoute>
+                  <DashboardList columns={userColumns} title='Add New User' />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path=':userId'
+              element={
+                <ProtectedRoute>
+                  <DashboardSingle />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path='new'
               element={
@@ -40,13 +73,27 @@ function App() {
               }
             />
           </Route>
-          <Route path='products'>
-            <Route index element={<DashboardList />} />
-            <Route path=':productId' element={<DashboardSingle />} />
+          <Route path='hotels'>
+            <Route
+              index
+              element={
+                <ProtectedRoute>
+                  <DashboardList columns={hotelColumns} title='Add New Hotel' />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path=':hotelId'
+              element={
+                <ProtectedRoute>
+                  <DashboardSingle />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path='new'
               element={
-                <DashboardNew inputs={productInputs} title='Add New Product' />
+                <DashboardNew inputs={hotelInputs} title='Add New Hotel' />
               }
             />
           </Route>

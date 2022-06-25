@@ -1,12 +1,12 @@
-.dashboard__new {
+.dashboard__newRoom {
   display: flex;
   width: 100%;
 
-  .dashboard__new__container {
+  .dashboard__newRoom__container {
     flex: 6;
 
-    .dashboard__new__container__top,
-    .dashboard__new__container__bottom {
+    .dashboard__newRoom__container__top,
+    .dashboard__newRoom__container__bottom {
       padding: 10px;
       box-shadow: var(--widgetShadow);
       -webkit-box-shadow: var(--widgetWebkitShadow);
@@ -19,7 +19,7 @@
         font-size: 20px;
       }
 
-      .dashboard__new__container__bottom__left {
+      .dashboard__newRoom__container__bottom__left {
         flex: 1;
         text-align: center;
         padding: 20px;
@@ -32,7 +32,7 @@
         }
       }
 
-      .dashboard__new__container__bottom__right {
+      .dashboard__newRoom__container__bottom__right {
         flex: 2;
         padding: 10px 30px;
 
@@ -42,7 +42,7 @@
           gap: 20px;
           justify-content: space-between;
 
-          .dashboard__new__container__bottom__right__formInput {
+          .dashboard__newRoom__container__bottom__right__formInput {
             width: 45%;
 
             label {
@@ -59,16 +59,16 @@
               outline: none;
             }
 
-            .dashboard__new__container__bottom__right__formInput__icon {
+            .dashboard__newRoom__container__bottom__right__formInput__icon {
               cursor: pointer;
             }
 
-            .dashboard__new__container__bottom__right__formInput__imgFile {
+            .dashboard__newRoom__container__bottom__right__formInput__imgFile {
               display: none;
             }
           }
 
-          .dashboard__new__container__bottom__right__btn {
+          .dashboard__newRoom__container__bottom__right__btn {
             display: flex;
             justify-content: flex-end;
             width: 100%;
@@ -83,11 +83,6 @@
               cursor: pointer;
               font-weight: bold;
               margin-top: 10px;
-
-              &:disabled {
-                background-color: var(--gray-color);
-                cursor: not-allowed;
-              }
             }
           }
         }

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useEffect } from 'react';
 import {
   DashboardChart,
   DashboardFeatured,
@@ -7,9 +8,21 @@ import {
   DashboardTable,
   DashboardWidget,
 } from '../../../components';
+import { AuthContext } from '../../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import './Home.scss';
 
 const Home = () => {
+  const { user } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user.isAdmin) {
+      navigate('/');
+    }
+  }, []);
+
   return (
     <div className='dashboard__home'>
       <DashboardSidebar />

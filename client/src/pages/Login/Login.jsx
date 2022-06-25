@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import './Login.scss';
@@ -10,9 +10,16 @@ const Login = () => {
     password: undefined,
   });
 
-  const { loading, error, dispatch } = useContext(AuthContext);
+  const { loading, error, dispatch, user } = useContext(AuthContext);
 
   const navigate = useNavigate();
+
+  // redirect to home if user is logged in
+  // useEffect(() => {
+  //   if (user) {
+  //     navigate('/');
+  //   }
+  // }, []);
 
   const handleChange = (event) => {
     const { id, value } = event.target;

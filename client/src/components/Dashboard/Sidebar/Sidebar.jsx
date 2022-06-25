@@ -50,16 +50,18 @@ const Sidebar = () => {
               <span>Users</span>
             </li>
           </Link>
-          <Link to='/dashboard/products' style={{ textDecoration: 'none' }}>
+          <Link to='/dashboard/hotels' style={{ textDecoration: 'none' }}>
             <li>
               <StoreIcon className='dashboard__sidebar__icon' />
-              <span>Products</span>
+              <span>Hotels</span>
             </li>
           </Link>
-          <li>
-            <CreditCardIcon className='dashboard__sidebar__icon' />
-            <span>Orders</span>
-          </li>
+          <Link to='/dashboard/rooms' style={{ textDecoration: 'none' }}>
+            <li>
+              <CreditCardIcon className='dashboard__sidebar__icon' />
+              <span>Rooms</span>
+            </li>
+          </Link>
           <li>
             <LocalShippingIcon className='dashboard__sidebar__icon' />
             <span>Delivery</span>
