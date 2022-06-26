@@ -13,15 +13,15 @@ import { useNavigate } from 'react-router-dom';
 import './Home.scss';
 
 const Home = () => {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user.isAdmin) {
-      navigate('/');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!user.isAdmin) {
+  //     navigate('/');
+  //   }
+  // }, []);
 
   return (
     <div className='dashboard__home'>

@@ -12,45 +12,45 @@ const New = ({ inputs, title }) => {
   const [imgData, setImgData] = useState('');
   const [per, setPer] = useState(null);
 
-  useEffect(() => {
-    const uploadFile = () => {
-      const name = 'images/users/' + new Date().getTime() + file.name;
-      const storageRef = ref(storage, name);
-      const uploadTask = uploadBytesResumable(storageRef, file);
+  // useEffect(() => {
+  //   const uploadFile = () => {
+  //     const name = 'images/users/' + new Date().getTime() + file.name;
+  //     const storageRef = ref(storage, name);
+  //     const uploadTask = uploadBytesResumable(storageRef, file);
 
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  //     uploadTask.on(
+  //       'state_changed',
+  //       (snapshot) => {
+  //         const progress =
+  //           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 
-          console.log('Upload is ' + progress + '% done');
-          setPer(progress);
+  //         console.log('Upload is ' + progress + '% done');
+  //         setPer(progress);
 
-          switch (snapshot.state) {
-            case 'paused':
-              console.log('Upload is paused');
-              break;
-            case 'running':
-              console.log('Upload is running');
-              break;
-            default:
-              break;
-          }
-        },
-        (error) => {
-          console.log(error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setImgData(downloadURL);
-          });
-        }
-      );
-    };
+  //         switch (snapshot.state) {
+  //           case 'paused':
+  //             console.log('Upload is paused');
+  //             break;
+  //           case 'running':
+  //             console.log('Upload is running');
+  //             break;
+  //           default:
+  //             break;
+  //         }
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //       },
+  //       () => {
+  //         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+  //           setImgData(downloadURL);
+  //         });
+  //       }
+  //     );
+  //   };
 
-    file && uploadFile();
-  }, [file]);
+  //   file && uploadFile();
+  // }, [file]);
 
   const handleChange = (e) => {
     setInfo((prev) => ({
@@ -63,12 +63,48 @@ const New = ({ inputs, title }) => {
     e.preventDefault();
 
     try {
-      const newUser = {
-        ...info,
-        img: imgData,
-      };
+      if (file) {
+        const name = 'images/users/' + new Date().getTime() + file.name;
+        const storageRef = ref(storage, name);
+        const uploadTask = uploadBytesResumable(storageRef, file);
 
-      await axios.post('/auth/register', newUser);
+        uploadTask.on(
+          'state_changed',
+          (snapshot) => {
+            const progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+            console.log('Upload is ' + progress + '% done');
+            setPer(progress);
+
+            switch (snapshot.state) {
+              case 'paused':
+                console.log('Upload is paused');
+                break;
+              case 'running':
+                console.log('Upload is running');
+                break;
+              default:
+                break;
+            }
+          },
+          (error) => {
+            console.log(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              const newUser = {
+                ...info,
+                img: downloadURL,
+              };
+
+              axios.post('/auth/register', newUser);
+
+              console.log('User created');
+            });
+          }
+        );
+      }
     } catch (error) {
       console.log(error);
     }
@@ -80,14 +116,14 @@ const New = ({ inputs, title }) => {
       <div className='dashboard__new__container'>
         <DashboardNavbar />
         <div className='dashboard__new__container__top'>
-          <h1>{title}</h1>
+          <h1>Add New User</h1>
         </div>
         <div className='dashboard__new__container__bottom'>
           <div className='dashboard__new__container__bottom__left'>
             <img
               src={
-                imgData
-                  ? imgData
+                file
+                  ? URL.createObjectURL(file)
                   : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
               }
               alt='Add New User'

@@ -10,12 +10,14 @@ import {
   DashboardList,
   DashboardSingle,
   DashboardNew,
+  DashboardNewHotel,
+  DashboardNewRoom,
 } from './pages';
 import { hotelInputs, productInputs, userInputs } from './formSource';
 import { DarkModeContext } from './context/DarkModeContext';
 import './App.scss';
 import { AuthContext } from './context/AuthContext';
-import { hotelColumns, userColumns } from './datatablesource';
+import { hotelColumns, roomColumns, userColumns } from './datatablesource';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -25,6 +27,8 @@ function App() {
 
     if (!user) {
       return <Navigate to='/dashboard/login' />;
+    } else if (!user.isAdmin) {
+      return <Navigate to='/' />;
     }
 
     return children;
@@ -54,7 +58,7 @@ function App() {
               index
               element={
                 <ProtectedRoute>
-                  <DashboardList columns={userColumns} title='Add New User' />
+                  <DashboardList columns={userColumns} title='Users' />
                 </ProtectedRoute>
               }
             />
@@ -66,19 +70,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path='new'
-              element={
-                <DashboardNew inputs={userInputs} title='Add New User' />
-              }
-            />
+            <Route path='new' element={<DashboardNew inputs={userInputs} />} />
           </Route>
           <Route path='hotels'>
             <Route
               index
               element={
                 <ProtectedRoute>
-                  <DashboardList columns={hotelColumns} title='Add New Hotel' />
+                  <DashboardList columns={hotelColumns} title='Hotels' />
                 </ProtectedRoute>
               }
             />
@@ -90,12 +89,26 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path='new' element={<DashboardNewHotel />} />
+          </Route>
+          <Route path='rooms'>
             <Route
-              path='new'
+              index
               element={
-                <DashboardNew inputs={hotelInputs} title='Add New Hotel' />
+                <ProtectedRoute>
+                  <DashboardList columns={roomColumns} title='Rooms' />
+                </ProtectedRoute>
               }
             />
+            <Route
+              path=':roomId'
+              element={
+                <ProtectedRoute>
+                  <DashboardSingle />
+                </ProtectedRoute>
+              }
+            />
+            <Route path='new' element={<DashboardNewRoom />} />
           </Route>
         </Route>
       </Routes>

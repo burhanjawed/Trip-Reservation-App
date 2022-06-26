@@ -68,6 +68,15 @@
             }
           }
 
+          .dashboard__newHotel__container__bottom__right__selectRooms {
+            width: 100%;
+
+            select {
+              width: 100%;
+              padding: 10px;
+            }
+          }
+
           .dashboard__newHotel__container__bottom__right__btn {
             display: flex;
             justify-content: flex-end;
